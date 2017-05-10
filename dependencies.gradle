@@ -5,3 +5,9 @@ ext.build_tools_version = '25.0.2'
 ext.kotlin_version = '1.1.2-3'
 ext.gradle_plugin_version = '2.2.2'
 ext.android_support_version = '25.3.0'
+
+ext.rx_relay_version = '2.0.0'
+
+ext.libs = [
+        rxRelay : "com.jakewharton.rxrelay2:rxrelay:$rx_relay_version"
+]
