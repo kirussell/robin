@@ -33,7 +33,8 @@
             <android.support.design.widget.TabLayout
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:viewPager="@{container}"/>
 
         </android.support.design.widget.AppBarLayout>
 
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
                 android:layout_margin="@dimen/fab_margin"
-                android:onClick="@{viewState.onFabClick}"
+                android:onClick="@{viewState.observeFabClick}"
                 app:srcCompat="@android:drawable/ic_dialog_email"/>
 
     </android.support.design.widget.CoordinatorLayout>
