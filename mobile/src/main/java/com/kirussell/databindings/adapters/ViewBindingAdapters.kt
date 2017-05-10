@@ -16,7 +16,7 @@ class ViewBindingAdapters {
 
     @BindingAdapter("android:onClick")
     fun click(view: View, clickObs: ClickObservable) {
-        view.setOnClickListener { clickObs.accept(Click()) }
+        view.setOnClickListener { clickObs.acceptClick(Click()) }
     }
 }
 
@@ -25,6 +25,10 @@ class ClickObservable: Relay<Click>() {
     private val relay = PublishRelay.create<Click>()
 
     override fun accept(value: Click?) {
+        throw NoSuchMethodError("Can not use this method outside databindings")
+    }
+
+    internal fun acceptClick(value: Click?) {
         relay.accept(value)
     }
 
