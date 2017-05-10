@@ -11,7 +11,12 @@ public class RobinDataBindingComponent implements DataBindingComponent {
     }
 
     @Override
-    public ViewBindingAdapter getViewBindingAdapter() {
-        return new ViewBindingAdapter();
+    public ViewBindingAdapters getViewBindingAdapters() {
+        return new ViewBindingAdapters();
+    }
+
+    @Override
+    public TabLayoutBindingAdapters getTabLayoutBindingAdapters() {
+        return new TabLayoutBindingAdapters();
     }
 }
