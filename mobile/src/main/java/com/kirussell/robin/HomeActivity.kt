@@ -9,28 +9,25 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import com.kirussell.base.ResourcesProvider
 import com.kirussell.databindings.adapters.ClickObservable
 
 import com.kirussell.databindings.adapters.RobinDataBindingComponent
 import com.kirussell.robin.databinding.ActivityHomeBinding
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), ResourcesProvider {
+
+    private val homeViewState = HomeViewState(
+            SectionsPagerAdapter(supportFragmentManager)
+    )
+    private val presenter = HomePagesPresenter(homeViewState, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DataBindingUtil.setDefaultComponent(RobinDataBindingComponent())
         val binding = DataBindingUtil.setContentView<ActivityHomeBinding>(this, R.layout.activity_home)
-        val homeViewState = HomeViewState(
-                SectionsPagerAdapter(supportFragmentManager)
-        )
         binding.viewState = homeViewState
         setSupportActionBar(binding.toolbar)
-
-        homeViewState.observeFabClick()
-                .subscribe(
-                        { Toast.makeText(applicationContext, "OLOLO", Toast.LENGTH_LONG).show() }
-                )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -49,22 +46,20 @@ class HomeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    /**
-     * A [FragmentPagerAdapter] that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
+        internal val data = HashMap<Int, String>()
+
         override fun getItem(position: Int) = when (position) {
-            0 -> Fragment()
+            HomeViewState.CURL_HELPER_TAB -> Fragment() //TODO
             else -> throw IllegalArgumentException("Have no view for position=$position")
         }
 
         override fun getCount() = 1
 
         override fun getPageTitle(position: Int) = when (position) {
-            0 -> "SECTION 1"
-            else -> null
+            HomeViewState.CURL_HELPER_TAB -> data[HomeViewState.CURL_HELPER_TAB]
+            else -> throw IllegalArgumentException("Have no title for position=$position")
         }
     }
 }
@@ -72,7 +67,13 @@ class HomeActivity : AppCompatActivity() {
 internal class HomeViewState(
         val adapter: HomeActivity.SectionsPagerAdapter
 ) {
+    internal companion object {
+        const val CURL_HELPER_TAB = 0
+    }
+
     private val clickObservable = ClickObservable()
 
     fun observeFabClick() = clickObservable
 }
+
+interface HomePresenter

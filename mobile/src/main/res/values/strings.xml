@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Robin</string>
     <string name="action_settings">Settings</string>
+    <string name="curl_helper">Curl Helper</string>
 </resources>
