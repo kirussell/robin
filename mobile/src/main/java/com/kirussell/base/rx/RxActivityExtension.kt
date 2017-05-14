@@ -1,10 +1,10 @@
 package com.kirussell.base.rx
 
 import android.os.Bundle
-import com.kirussell.base.LifecycleCallbacks
+import com.kirussell.base.ActivityLifecycleCallbacks
 
 
-class RxActivityExtension(val scopes: RxLifecycleScopes) : LifecycleCallbacks {
+class RxActivityExtension(val scopes: RxLifecycleScopes) : ActivityLifecycleCallbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         scopes.exists().onScopeBegins()

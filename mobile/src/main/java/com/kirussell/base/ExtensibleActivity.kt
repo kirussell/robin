@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity
 
 open class ExtensibleActivity : AppCompatActivity() {
 
-    val activityLifecycleExtensions = mutableListOf<LifecycleCallbacks>()
+    val activityLifecycleExtensions = mutableListOf<ActivityLifecycleCallbacks>()
 
-    fun addLifecycleCallbacks(callbacks: LifecycleCallbacks) {
+    fun addLifecycleCallbacks(callbacks: ActivityLifecycleCallbacks) {
         activityLifecycleExtensions.add(callbacks)
     }
 
@@ -43,7 +43,7 @@ open class ExtensibleActivity : AppCompatActivity() {
     }
 }
 
-interface LifecycleCallbacks {
+interface ActivityLifecycleCallbacks {
     fun onCreate(savedInstanceState: Bundle?): Unit
     fun onStart(): Unit
     fun onResume(): Unit
