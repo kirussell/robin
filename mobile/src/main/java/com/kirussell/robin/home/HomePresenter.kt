@@ -1,10 +1,14 @@
-package com.kirussell.robin
+package com.kirussell.robin.home
 
 import com.kirussell.base.ResourcesProvider
+import com.kirussell.robin.R
+import com.kirussell.robin.home.di.HomeScope
 import com.kirussell.rx.subscribeNoErr
+import javax.inject.Inject
 
 
-class HomePagesPresenter internal constructor(
+@HomeScope
+class HomePagesPresenter internal @Inject constructor(
         val viewState: HomeViewState,
         val resourceProvider: ResourcesProvider
 ): HomePresenter, ResourcesProvider by resourceProvider {

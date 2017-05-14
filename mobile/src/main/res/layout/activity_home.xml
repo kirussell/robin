@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="viewState"
-                  type="com.kirussell.robin.HomeViewState"/>
+                  type="com.kirussell.robin.home.HomeViewState"/>
     </data>
     <android.support.design.widget.CoordinatorLayout
             android:id="@+id/main_content"
