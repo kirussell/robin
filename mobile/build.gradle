@@ -38,4 +38,7 @@ dependencies {
     kapt "com.android.databinding:compiler:$gradle_plugin_version"
 
     compile libs.rxRelay
+
+    compile libs.dagger
+    kapt    libs.daggerCompiler
 }
