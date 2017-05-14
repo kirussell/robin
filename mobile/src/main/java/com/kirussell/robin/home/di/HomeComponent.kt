@@ -3,6 +3,7 @@ package com.kirussell.robin.home.di
 import android.support.v4.app.FragmentManager
 import com.kirussell.base.ResourcesProvider
 import com.kirussell.base.di.subcomponents.SubcomponentBuilder
+import com.kirussell.base.rx.RxLifecycleScopes
 import com.kirussell.robin.home.HomeActivity
 import com.kirussell.robin.home.HomePagesPresenter
 import com.kirussell.robin.home.HomePresenter
@@ -27,11 +28,13 @@ interface HomeComponent {
 @Module(includes = arrayOf(HomeModule.ModuleBinds::class))
 class HomeModule(
         val fragmentManager: FragmentManager,
-        val resProvider: ResourcesProvider
+        val resProvider: ResourcesProvider,
+        val rxLifecycleScopes: RxLifecycleScopes
 ) {
 
     @Provides @HomeScope fun fragmentManager(): FragmentManager = fragmentManager
     @Provides @HomeScope fun resourcesProvider(): ResourcesProvider = resProvider
+    @Provides @HomeScope fun rxLifecycleScopes(): RxLifecycleScopes = rxLifecycleScopes
 
     @Module
     interface ModuleBinds {

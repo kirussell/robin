@@ -8,6 +8,5 @@ fun <T : Throwable> onErrorDefault() : Consumer<T> = Consumer { t ->
     Log.e("Observable", t.toString())
 }
 
-fun <O> Observable<O>.subscribeNoErr(onNext: (O) -> Unit) {
+fun <O> Observable<O>.subscribeNoErr(onNext: (O) -> Unit) =
     subscribe(Consumer { o -> onNext.invoke(o) }, onErrorDefault<Throwable>())
-}

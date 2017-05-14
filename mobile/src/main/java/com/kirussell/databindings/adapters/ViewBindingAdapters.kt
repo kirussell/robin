@@ -2,9 +2,8 @@ package com.kirussell.databindings.adapters
 
 import android.databinding.BindingAdapter
 import android.view.View
-import com.jakewharton.rxrelay2.PublishRelay
-import com.jakewharton.rxrelay2.Relay
-import io.reactivex.Observer
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 
 
 class ViewBindingAdapters {
@@ -20,24 +19,16 @@ class ViewBindingAdapters {
     }
 }
 
-class ClickObservable: Relay<Click>() {
+class ClickObservable {
 
-    private val relay = PublishRelay.create<Click>()
+    val subject: PublishSubject<Click> = PublishSubject.create<Click>()
 
-    override fun accept(value: Click?) {
-        throw NoSuchMethodError("Can not use this method outside databindings")
+    internal fun acceptClick(click: Click?) {
+        subject.onNext(click)
     }
 
-    internal fun acceptClick(value: Click?) {
-        relay.accept(value)
-    }
-
-    override fun subscribeActual(observer: Observer<in Click>?) {
-        relay.subscribeActual(observer)
-    }
-
-    override fun hasObservers(): Boolean {
-        return relay.hasObservers()
+    fun observe(): Observable<Click> {
+        return subject
     }
 }
 

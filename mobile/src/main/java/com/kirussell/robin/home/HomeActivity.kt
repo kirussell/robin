@@ -32,7 +32,7 @@ class HomeActivity : BaseActivity<HomeComponent, HomeComponent.Builder>(), Resou
     }
 
     override fun onBuildComponent(builder: HomeComponent.Builder) {
-        builder.homeModule(HomeModule(supportFragmentManager, this))
+        builder.homeModule(HomeModule(supportFragmentManager, this, this))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -79,7 +79,8 @@ class HomeViewState @Inject constructor(
     }
 
     private val clickObservable = ClickObservable()
-    fun observeFabClick() = clickObservable
+
+    fun fabClick() = clickObservable
 }
 
 interface HomePresenter
