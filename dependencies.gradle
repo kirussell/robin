@@ -6,11 +6,13 @@ ext.kotlin_version = '1.1.2-3'
 ext.gradle_plugin_version = '2.2.2'
 ext.android_support_version = '25.3.0'
 ext.dagger_version = '2.11-rc2'
-
-ext.rx_relay_version = '2.0.0'
+ext.leak_canary_version = '1.5.1'
+ext.rx_java_version = '2.1.0'
 
 ext.libs = [
-        rxRelay         : "com.jakewharton.rxrelay2:rxrelay:$rx_relay_version",
-        dagger          : "com.google.dagger:dagger:$dagger_version",
-        daggerCompiler  : "com.google.dagger:dagger-compiler:$dagger_version"
+        rxJava        : "io.reactivex.rxjava2:rxjava:$rx_java_version",
+        dagger        : "com.google.dagger:dagger:$dagger_version",
+        daggerCompiler: "com.google.dagger:dagger-compiler:$dagger_version",
+        leakCanary    : "com.squareup.leakcanary:leakcanary-android:$leak_canary_version",
+        leakCanaryNoOp: "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version",
 ]
