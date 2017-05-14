@@ -9,7 +9,7 @@ import com.kirussell.robin.di.robinComponent
 
 
 abstract class BaseActivity<Component, in ComponentBuilder : SubcomponentBuilder<Component>>
-    : ExtensibleActivity(), RxLifecycleScopes by SimpleRxLifecycleScopes() {
+    : ExtensibleActivity(), RxLifecycleScopes {
 
     private val scopes = SimpleRxLifecycleScopes()
 
@@ -41,6 +41,5 @@ abstract class BaseActivity<Component, in ComponentBuilder : SubcomponentBuilder
     }
 
     abstract fun onBuildComponent(builder: ComponentBuilder)
-
 
 }
