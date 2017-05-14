@@ -31,7 +31,6 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile 'com.google.android.gms:play-services:10.2.1'
     compile "com.android.support:appcompat-v7:$android_support_version"
     compile "com.android.support:design:$android_support_version"
 
