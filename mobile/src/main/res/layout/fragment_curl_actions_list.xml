@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewState" type="com.kirussell.robin.curl.CurlActionsListViewState"/>
+    </data>
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:data="@{viewState.actionsList}"
+            android:viewDelegates="@{viewState.viewDelegates}"
+            android:layoutManager="@{viewState.layoutManager}"/>
+</layout>

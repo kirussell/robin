@@ -2,7 +2,6 @@ package com.kirussell.robin.home
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.view.Menu
@@ -11,6 +10,7 @@ import com.kirussell.base.BaseActivity
 import com.kirussell.base.ResourcesProvider
 import com.kirussell.databindings.adapters.ClickObservable
 import com.kirussell.robin.R
+import com.kirussell.robin.curl.CurlActionsListFragment
 import com.kirussell.robin.databinding.ActivityHomeBinding
 import com.kirussell.robin.home.di.HomeComponent
 import com.kirussell.robin.home.di.HomeModule
@@ -58,7 +58,7 @@ class SectionsPagerAdapter @Inject constructor(fm: FragmentManager) : FragmentPa
     internal val data = HashMap<Int, String>()
 
     override fun getItem(position: Int) = when (position) {
-        HomeViewState.CURL_HELPER_TAB -> Fragment() //TODO
+        HomeViewState.CURL_HELPER_TAB -> CurlActionsListFragment()
         else -> throw IllegalArgumentException("Have no view for position=$position")
     }
 
