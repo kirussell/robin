@@ -19,4 +19,9 @@ public class RobinDataBindingComponent implements DataBindingComponent {
     public TabLayoutBindingAdapters getTabLayoutBindingAdapters() {
         return new TabLayoutBindingAdapters();
     }
+
+    @Override
+    public RecyclerViewBindingAdapters getRecyclerViewBindingAdapters() {
+        return new RecyclerViewBindingAdapters();
+    }
 }
