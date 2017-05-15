@@ -28,6 +28,17 @@ class HomePagesPresenter internal @Inject constructor(
                     .compose(withinScope())
                     .subscribeNoErr { _ -> onStartCommandCreation() }
         }
+
+        displayed {
+            viewState.pageChange().observe()
+                    .compose(withinScope())
+                    .subscribeNoErr { pagePosition ->
+                        viewState.fabVisible.set(when (pagePosition) {
+                            HomeViewState.CURL_HELPER_TAB -> true
+                            else -> false
+                        })
+                    }
+        }
     }
 
     private fun onStartCommandCreation() {

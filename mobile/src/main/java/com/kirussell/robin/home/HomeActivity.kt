@@ -1,6 +1,7 @@
 package com.kirussell.robin.home
 
 import android.databinding.DataBindingUtil
+import android.databinding.ObservableBoolean
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -9,6 +10,7 @@ import android.view.MenuItem
 import com.kirussell.base.BaseActivity
 import com.kirussell.base.ResourcesProvider
 import com.kirussell.databindings.adapters.ClickObservable
+import com.kirussell.databindings.adapters.OnPageChangeObservable
 import com.kirussell.robin.R
 import com.kirussell.robin.curl.CurlActionsListFragment
 import com.kirussell.robin.databinding.ActivityHomeBinding
@@ -78,9 +80,13 @@ class HomeViewState @Inject constructor(
         const val CURL_HELPER_TAB = 0
     }
 
-    private val clickObservable = ClickObservable()
+    val fabVisible = ObservableBoolean(true)
 
+    private val clickObservable = ClickObservable()
     fun fabClick() = clickObservable
+
+    private val onPageChangeObservable = OnPageChangeObservable()
+    fun pageChange() = onPageChangeObservable
 }
 
 interface HomePresenter
