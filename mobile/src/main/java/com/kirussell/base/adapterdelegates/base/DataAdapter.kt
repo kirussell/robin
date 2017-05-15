@@ -1,4 +1,4 @@
-package com.kirussell.base.adapterdelegates
+package com.kirussell.base.adapterdelegates.base
 
 import android.support.v7.widget.RecyclerView
 
@@ -39,7 +39,7 @@ class ListDataAdapter : DataAdapter() {
         notifyDataSetChanged()
     }
 
-    fun setItem(item: Any) {
+    fun addItem(item: Any) {
         val size = mItems.size
         mItems.add(item)
         notifyItemChanged(size)
@@ -50,7 +50,7 @@ class ListDataAdapter : DataAdapter() {
         notifyDataSetChanged()
     }
 
-    fun setItem(item: Any, position: Int) {
+    fun addItem(item: Any, position: Int) {
         mItems.add(position, item)
         notifyItemChanged(position)
     }

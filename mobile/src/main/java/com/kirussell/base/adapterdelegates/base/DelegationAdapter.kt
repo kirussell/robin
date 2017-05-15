@@ -1,7 +1,6 @@
-package com.kirussell.base.adapterdelegates
+package com.kirussell.base.adapterdelegates.base
 
 import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
 
 
 /**
@@ -23,7 +22,7 @@ class DelegationAdapter(
         mDataAdapterDelegate.setDataObserver(this)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return mDelegatesManager.onCreateViewHolder(parent, viewType)
     }
 

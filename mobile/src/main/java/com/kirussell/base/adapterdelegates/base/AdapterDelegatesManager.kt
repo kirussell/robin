@@ -1,4 +1,4 @@
-package com.kirussell.base.adapterdelegates
+package com.kirussell.base.adapterdelegates.base
 
 import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 
 internal class AdapterDelegatesManager {
 
-    private val delegates = SparseArrayCompat<AdapterViewDelegate<*>>()
+    private val delegates = SparseArrayCompat<AdapterViewDelegate<RecyclerView.ViewHolder>>()
 
-    fun addDelegate(delegate: AdapterViewDelegate<*>): AdapterDelegatesManager {
+    fun addDelegate(delegate: AdapterViewDelegate<RecyclerView.ViewHolder>): AdapterDelegatesManager {
         var viewType = delegates.size()
         while (delegates.get(viewType) != null) {
             viewType++
@@ -18,7 +18,7 @@ internal class AdapterDelegatesManager {
     }
 
     private fun addDelegate(
-            viewType: Int, delegate: AdapterViewDelegate<*>
+            viewType: Int, delegate: AdapterViewDelegate<RecyclerView.ViewHolder>
     ): AdapterDelegatesManager {
         if (delegates.get(viewType) != null) {
             throw IllegalArgumentException("An AdapterDelegate is already registered for the " +
@@ -53,6 +53,7 @@ internal class AdapterDelegatesManager {
         delegate.onBindViewHolder(item, viewHolder)
     }
 
-    fun getDelegateForViewType(viewType: Int): AdapterViewDelegate<*>? = delegates.get(viewType)
+    fun getDelegateForViewType(viewType: Int): AdapterViewDelegate<RecyclerView.ViewHolder>?
+            = delegates.get(viewType)
 
 }
