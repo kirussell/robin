@@ -12,7 +12,7 @@ import com.kirussell.robin.BR
 
 
 abstract class DataBindingsViewDelegate<DataBinding : ViewDataBinding>
-    : AdapterViewDelegate<DataBindingsViewDelegate.DataBindingsViewHolder>() {
+    : AdapterViewDelegate<RecyclerView.ViewHolder>() {
 
     lateinit var dataBinding: DataBinding
 
@@ -25,7 +25,7 @@ abstract class DataBindingsViewDelegate<DataBinding : ViewDataBinding>
 
     @LayoutRes abstract fun itemLayoutRes(): Int
 
-    override fun onBindViewHolder(item: Any, holder: DataBindingsViewHolder) {
+    override fun onBindViewHolder(item: Any, holder: RecyclerView.ViewHolder) {
         dataBinding.setVariable(BR.viewState, item)
     }
 
