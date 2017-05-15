@@ -17,6 +17,11 @@ class ViewBindingAdapters {
     fun click(view: View, clickObs: ClickObservable) {
         view.setOnClickListener { clickObs.acceptClick(Click()) }
     }
+
+    @BindingAdapter("android:visibility")
+    fun visibility(view: View, visible: Boolean) {
+        view.visibility = if (visible) View.VISIBLE else View.GONE
+    }
 }
 
 class ClickObservable {
